@@ -20,13 +20,16 @@ var checkLength = function() {
 // generates the password
 var generatePassword = function() {
   var passLength = checkLength();
-  console.log(passLength);
+
+  // asks whether to use each type of character
   var useUpper = confirm("Would you like to use uppercase letters? Press OK for yes.");
   var useLower = confirm("Would you like to use lowercase letters?");
   var useNumber = confirm("Would you like to use numbers?");
   var useSpecial = confirm("Would you like to use special characters?");
+  //empty array to store password
   var passwordArray = [];
 
+  //verifies that at least one character type is chosen
   if (!useUpper && !useLower && !useNumber && !useSpecial) {
     alert("You need to have at least one kind of character! Please try again.");
     generatePassword();
@@ -39,29 +42,39 @@ var generatePassword = function() {
 
     // checks each character type for valid use
     if (useUpper && choiceNumber == 0) {
-      newCharacter = "u";
-      console.log(newCharacter);
+      // chooses random index number of upper & uses that character for new character
+      var newCharacterIndex = Math.floor(Math.random() * 26);
+      newCharacter = upper[newCharacterIndex];
+      // push character to array
       passwordArray.push(newCharacter);
-      console.log(passwordArray);
     } else if (useLower && choiceNumber == 1) {
-      newCharacter = "l";
-      console.log(newCharacter);
+      // chooses random index number of lower to use that character
+      var newCharacterIndex = Math.floor(Math.random() * 26);
+      newCharacter = lower[newCharacterIndex];
+      //pushes character to the password array
       passwordArray.push(newCharacter);
-      console.log(passwordArray);
     } else if (useNumber && choiceNumber == 2) {
-      newCharacter = "n";
-      console.log(newCharacter);
+      // chooses random index number of numerical to use that character
+      var newCharacterIndex = Math.floor(Math.random() * 10);
+      newCharacter = numerical[newCharacterIndex];
+      // push character to array
       passwordArray.push(newCharacter);
-      console.log(passwordArray);
     } else if (useSpecial && choiceNumber == 3) {
-      newCharacter = "s";
-      console.log(newCharacter);
+      // chooses random index number of special to use that character
+      var newCharacterIndex = Math.floor(Math.random() * 29);
+      newCharacter = special[newCharacterIndex];
+      //push character to array
       passwordArray.push(newCharacter);
-      console.log(passwordArray);
     } else {
+      //if random number did not match an acceptable character type, ensure pw length is unaffected
       i--;
     }
   }
+
+  //join the array into an uninterrupted string
+  var password = passwordArray.join("");
+  //returns string to the write passsword function
+  return password;
 }
 
 // Get references to the #generate element
