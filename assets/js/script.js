@@ -25,6 +25,7 @@ var generatePassword = function() {
   var useLower = confirm("Would you like to use lowercase letters?");
   var useNumber = confirm("Would you like to use numbers?");
   var useSpecial = confirm("Would you like to use special characters?");
+  var passwordArray = [];
 
   if (!useUpper && !useLower && !useNumber && !useSpecial) {
     alert("You need to have at least one kind of character! Please try again.");
@@ -34,21 +35,32 @@ var generatePassword = function() {
   //using length of password, generates new characters
   for (i = 0; i < passLength; i++) {
     var choiceNumber = Math.floor(Math.random() * 4);
+    var newCharacter = "";
 
     // checks each character type for valid use
     if (useUpper && choiceNumber == 0) {
-      console.log("upper");
+      newCharacter = "u";
+      console.log(newCharacter);
+      passwordArray.push(newCharacter);
+      console.log(passwordArray);
     } else if (useLower && choiceNumber == 1) {
-      console.log("lower");
+      newCharacter = "l";
+      console.log(newCharacter);
+      passwordArray.push(newCharacter);
+      console.log(passwordArray);
     } else if (useNumber && choiceNumber == 2) {
-      console.log("number");
+      newCharacter = "n";
+      console.log(newCharacter);
+      passwordArray.push(newCharacter);
+      console.log(passwordArray);
     } else if (useSpecial && choiceNumber == 3) {
-      console.log("special");
+      newCharacter = "s";
+      console.log(newCharacter);
+      passwordArray.push(newCharacter);
+      console.log(passwordArray);
     } else {
       i--;
     }
-
-
   }
 }
 
