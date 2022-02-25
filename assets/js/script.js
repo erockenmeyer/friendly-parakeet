@@ -7,20 +7,19 @@ var special = "!#$%'()*+,-./:;<=>?@[]^_`{}|~";
 
 // gets desired length of password - must be between 8 & 128 characters
 var checkLength = function() {
-  passLength = prompt("How long would you like your password to be? Please choose a number between 8 and 128.")
+  var passLength = prompt("How long would you like your password to be? Please choose a number between 8 and 128.")
   passLength = parseInt(passLength);
   if (passLength >= 8 && passLength <= 128) {
     return passLength;
   } else {
     alert("You did not enter a valid number. Please try again.");
-    checkLength();
+    return checkLength();
   }
 }
 
 // generates the password
 var generatePassword = function() {
-  var passLength = checkLength();
-
+  var passwordLength = checkLength();
   // asks whether to use each type of character
   var useUpper = confirm("Would you like to use uppercase letters? Press OK for yes.");
   var useLower = confirm("Would you like to use lowercase letters?");
@@ -32,11 +31,11 @@ var generatePassword = function() {
   //verifies that at least one character type is chosen
   if (!useUpper && !useLower && !useNumber && !useSpecial) {
     alert("You need to have at least one kind of character! Please try again.");
-    generatePassword();
+    return generatePassword();
   }
 
   //using length of password, generates new characters
-  for (i = 0; i < passLength; i++) {
+  for (i = 0; i < passwordLength; i++) {
     var choiceNumber = Math.floor(Math.random() * 4);
     var newCharacter = "";
 
