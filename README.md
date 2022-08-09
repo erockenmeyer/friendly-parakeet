@@ -3,6 +3,9 @@
 ## Purpose
 Generate a password of a specified length using upper- or lower-case letters, special characters, and/or numbers.
 
+## Usage
+Access the website and follow the directions as prompted using on-screen popups to decide length and characters, after which a password will be generated.
+
 ## Built With
 * HTML
 * CSS
